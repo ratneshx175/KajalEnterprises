@@ -1,0 +1,36 @@
+﻿@model Product
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label>Product Title</label>
+            <input asp-for="Title" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label>Product Description</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>List Price</label>
+            <input asp-for="ListPrice" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label>Real Price</label>
+            <input asp-for="RealPrice" class="form-control" />
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-dark form-control">Create</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary form-control">
+                    Back
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

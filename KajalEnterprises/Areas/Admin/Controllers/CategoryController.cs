@@ -3,8 +3,9 @@ using KajalEnterprises.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace KajalEnterprises.Controllers
+namespace KajalEnterprises.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly ApplicationDBContext _db;
@@ -13,14 +14,14 @@ namespace KajalEnterprises.Controllers
             _db = db;
         }
 
-        
+
         public IActionResult Index()
         {
             List<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
         }
 
-        public IActionResult Create() 
+        public IActionResult Create()
         {
             return View();
         }
@@ -35,17 +36,17 @@ namespace KajalEnterprises.Controllers
                 TempData["success"] = "Category created successfully";
             }
             return RedirectToAction("Index");
-            
+
         }
 
         public IActionResult Edit(int? id)
         {
-            if(id==null||id==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
             Category? categoryFromDb = _db.Categories.Find(id);
-            if(categoryFromDb == null)
+            if (categoryFromDb == null)
             {
                 return NotFound();
             }
@@ -62,7 +63,7 @@ namespace KajalEnterprises.Controllers
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
-            
+
             return View();
         }
 
@@ -89,8 +90,8 @@ namespace KajalEnterprises.Controllers
             {
                 return NotFound();
             }
-                _db.Categories.Remove(obj);
-                _db.SaveChanges();
+            _db.Categories.Remove(obj);
+            _db.SaveChanges();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
 
