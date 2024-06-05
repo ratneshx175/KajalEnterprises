@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KajalEnterprises.Models
 {
@@ -14,5 +15,12 @@ namespace KajalEnterprises.Models
         public double ListPrice { get; set; }
         [Required]
         public double RealPrice { get; set; }
+        
+        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
+        public string ImageUrl { get; set; }
+
     }
 }
