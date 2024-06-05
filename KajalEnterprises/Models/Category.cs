@@ -11,5 +11,7 @@ namespace KajalEnterprises.Models
         public string Name { get; set; }
         [Range(1,100)]
         public int DisplayOrder { get; set; }
+
+        
     }
 }

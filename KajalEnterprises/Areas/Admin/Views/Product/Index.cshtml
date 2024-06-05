@@ -1,29 +1,28 @@
 ﻿@model List<Product>
 
-<div class="Container">
-    <div class="row pt-4 pb-3">
-        <div class="col-6">
-            <h2 class="text-primary">
-                Product List
-            </h2>
-        </div>
-        <div class="col-6 text-end">
-            <a asp-action="Create" class="btn btn-primary">
-                 Create New Product
-            </a>
-        </div>
+<div class="Container border p-3 mt-4">
+    
+    <div class="row">
+        <h2 class="text-primary text-center">Product List</h2>
+        <hr />
     </div>
 
-    <table class="table table-bordered ">
+    <div class="col-12 text-end pb-3 ">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-square"></i> Create New Product
+        </a>
+    </div>
+
+    <table class="table table-bordered table-striped ">
         <thead>
             <tr>
                 <th>
                     Product Name
                 </th>
-                <th>
+                <th class="hide-on-small1">
                     Description
                 </th>
-                <th>
+                <th class="hide-on-small2">
                     List Price
                 </th>
                 <th>
@@ -32,12 +31,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model.OrderBy(u => u.Title))
+            @foreach (var obj in Model.OrderBy(u => u.Id))
             {
                 <tr>
                     <td>@obj.Title</td>
-                    <td>@obj.Description</td>
-                    <td>@obj.ListPrice</td>
+                    <td class="hide-on-small1">@obj.Description</td>
+                    <td class="hide-on-small2">@obj.ListPrice</td>
                     <td>@obj.RealPrice</td>
                     
                     <td>

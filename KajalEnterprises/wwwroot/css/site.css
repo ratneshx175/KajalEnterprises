@@ -20,3 +20,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+@media (max-width: 700px) {
+    .hide-on-small1 {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .hide-on-small2 {
+        display: none;
+    }
+}
