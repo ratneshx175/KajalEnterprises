@@ -1,8 +1,10 @@
-﻿@model Product
+﻿@model ProductVM
 
 
 
-<form method="post">
+<form method="post" class="row" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.ImageUrl" hidden/>
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary text-center">Create Product</h2>
@@ -10,19 +12,29 @@
         </div>
         <div class="mb-3">
             <label>Product Title</label>
-            <input asp-for="Title" class="form-control" required />
+            <input asp-for="Product.Title" class="form-control" required />
         </div>
         <div class="mb-3">
             <label>Product Description</label>
-            <input asp-for="Description" class="form-control" />
+            <input asp-for="Product.Description" class="form-control" />
         </div>
         <div class="mb-3">
             <label>List Price</label>
-            <input asp-for="ListPrice" class="form-control" required />
+            <input asp-for="Product.ListPrice" class="form-control" required />
         </div>
         <div class="mb-3">
             <label>Real Price</label>
-            <input asp-for="RealPrice" class="form-control" />
+            <input asp-for="Product.RealPrice" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>CategoryId</label>
+            <select asp-for="@Model.Product.CategoryId" asp-items="@Model.CategoryList" class="form-select" >
+                <option disabled selected>--Select Category--</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Product.ImageUrl"></label>
+            <input asp-for="Product.ImageUrl" type="file" name="file"  class="form-control" />
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
