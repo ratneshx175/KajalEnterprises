@@ -1,0 +1,59 @@
+﻿@model Product
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-image-large {
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        .product-image-large:hover {
+            transform: scale(1.05);
+        }
+        .btn-animated {
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .btn-animated:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .fade-in {
+            animation: fadeIn 1s;
+        }
+        keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 fade-in">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Model.ImageUrl" class="product-image-large rounded shadow" alt="@Model.Title">
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-uppercase text-dark">@Model.Title</h2>
+                <p class="text-warning">by <b>@Model.Category.Name</b></p>
+                <p class="text-muted"><span class="text-decoration-line-through">@Model.ListPrice.ToString("c")</span></p>
+                <p class="text-dark">@Model.RealPrice.ToString("c")</p>
+                <p class="text-dark">@Model.Description</p>
+                <div class="form-group">
+                    <label for="quantity" class="text-dark">Quantity:</label>
+                    <input type="number" id="quantity" class="form-control" min="1" value="1">
+                </div>
+                <button class="btn btn-primary bg-gradient border-0 btn-animated mt-3" id="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

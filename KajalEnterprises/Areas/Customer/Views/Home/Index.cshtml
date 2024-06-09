@@ -1,8 +1,68 @@
-﻿@{
+﻿@model IEnumerable<KajalEnterprises.Models.Product>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/Index.css" />
+
+<div class="container mt-0">
+    <div class="bg-light bg-gradient p-4 mb-4 rounded shadow-sm text-center animated-container">
+        <h2 class="text-primary font-weight-bold">Welcome to Kajal Enterprises!</h2>
+        <p class="text-dark lead">Your one-stop shop for all educational supplies.</p>
+        <hr class="my-4">
+        <p class="text-secondary">We specialize in manufacturing and delivering high-quality whiteboards, blackboards, maps, and learning materials directly to schools and colleges.</p>
+        <p class="text-secondary">Explore our products and contact us for more details.</p>
+        <p class="text-secondary">Delhi-110086 | Contact Number: <a href="tel:+918287201284" class="text-primary font-weight-bold">+918287201284</a></p>
+    </div>
 </div>
+
+<form method="get" asp-action="Index">
+    <label for="categoryId">Filter by Category</label>
+    <div class="form-group col-4">
+        <select id="categoryId" name="categoryId" class="form-select">
+            <option value="">All Products</option>
+            @foreach (var category in ViewBag.Categories as SelectList)
+            {
+                <option value="@category.Value">@category.Text</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+
+
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@product.ImageUrl" class="card-img-top rounded mb-2 product-image" />
+                        <div class="pl-1">
+                            <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
+                            <p class="card-title text-warning text-center">by <b>@product.Category.Name</b></p>
+                        </div>
+                        <div class="pl-1">
+                            <p class="text-dark text-opacity-75 text-center mb-0"><span class="text-decoration-line-through">@product.ListPrice.ToString("c")</span></p>
+                        </div>
+                        <div class="pl-1">
+                            <p class="text-dark text-opacity-75 text-center">@product.RealPrice.ToString("c")</p>
+                        </div>
+                        <div>
+                            <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+

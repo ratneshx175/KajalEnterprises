@@ -1,0 +1,22 @@
+﻿
+.product-image {
+    transition: transform 0.2s ease-out;
+}
+
+.product-image:hover {
+    transform: scale(1.05);
+}
+
+.animated-container {
+    animation: fadeIn 0s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
