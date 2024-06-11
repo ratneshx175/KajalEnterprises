@@ -3,6 +3,10 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@{
+    var indianCulture = new System.Globalization.CultureInfo("hi-IN");
+    indianCulture.NumberFormat.CurrencySymbol = "₹";
+}
 
 <link rel="stylesheet" href="~/css/Index.css" />
 
@@ -46,10 +50,10 @@
                             <p class="card-title text-warning text-center">by <b>@product.Category.Name</b></p>
                         </div>
                         <div class="pl-1">
-                            <p class="text-dark text-opacity-75 text-center mb-0"><span class="text-decoration-line-through">@product.ListPrice.ToString("c")</span></p>
+                            <p class="text-dark text-opacity-75 text-center mb-0"><span class="text-decoration-line-through">@product.ListPrice.ToString("c", indianCulture)</span></p>
                         </div>
                         <div class="pl-1">
-                            <p class="text-dark text-opacity-75 text-center">@product.RealPrice.ToString("c")</p>
+                            <p class="text-dark text-opacity-75 text-center">@product.RealPrice.ToString("c", indianCulture)</p>
                         </div>
                         <div>
                             <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
